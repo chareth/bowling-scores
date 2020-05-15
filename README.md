@@ -1,17 +1,16 @@
 # BowlingScores
 
-How to start the BowlingScores application with docker
+How to start the BowlingScores application with docker (recommended)
 ---
 - Requires the following installed:
   - docker
   - docker-compose
 
-1. Go to config.yml file and set the database.url to `jdbc:postgresql://database:5432/postgres`
 1. `docker-compose build`
 1. `docker-compose up`
 
 
-How to start the BowlingScores application locally
+How to start the BowlingScores application if you don't have docker (optional)
 ---
 - Requires the following installed:
   - Java 8
