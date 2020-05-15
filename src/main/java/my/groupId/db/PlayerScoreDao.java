@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package my.groupId.db;
 
 import my.groupId.api.model.Frame;
@@ -22,7 +17,7 @@ public interface PlayerScoreDao {
     @SqlUpdate("insert into playerscores (playerid) "
             + "values (:playerId)")
     void insertPlayerScore(@Bind("playerId") int playerId);
-    
+
     @SqlUpdate("insert into frames (playerid, framenumber) "
             + "values (:playerId, :frameNumber)")
     void insertFrame(@Bind("playerId") int playerId, @Bind("frameNumber") int frameNumber);
@@ -42,7 +37,7 @@ public interface PlayerScoreDao {
             + "subsequentrolladdsavail=:frame.subsequentRollAddsAvail "
             + "where playerid=:playerId AND framenumber=:frame.frameNumber")
     void updateFrame(@BindBean("frame") Frame frame, @Bind("playerId") int playerId);
-    
+
     @SqlUpdate("UPDATE playerscores SET lastupdatedframe=:lastUpdatedFrame "
             + "where playerid=:playerId")
     void updateLastUpdatedFrame(@Bind("playerId") int playerId, @Bind("lastUpdatedFrame") int lastUpdatedFrame);

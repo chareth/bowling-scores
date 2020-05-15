@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package my.groupId.core;
 
 import java.util.ArrayList;
@@ -28,7 +23,7 @@ public class ScoringServiceTest {
 
     @Mock
     private final PlayerScoreDao dao = Mockito.mock(PlayerScoreDao.class);
-    
+
     private final ScoringService instance = new ScoringService(dao);
 
     private PlayerScore player;
@@ -117,7 +112,7 @@ public class ScoringServiceTest {
         // frame three is open; rolls 0, 3
         f3.setRollOne(0);
         instance.applyPinsToSparesAndStrikes(f3.getFrameNumber(), f3.getRollOne(), player);
-        
+
         f3.setRollTwo(3);
         instance.applyPinsToSparesAndStrikes(f3.getFrameNumber(), f3.getRollTwo(), player);
 
@@ -271,7 +266,7 @@ public class ScoringServiceTest {
 
         // frame two is strike; rolls 10
         f2.setRollOne(10);
-        instance.applyPinsToSparesAndStrikes(f2.getFrameNumber(), f2.getRollOne(), player);       
+        instance.applyPinsToSparesAndStrikes(f2.getFrameNumber(), f2.getRollOne(), player);
 
         // frame three is open; rolls 2, 7
         f3.setRollOne(2);
@@ -308,7 +303,7 @@ public class ScoringServiceTest {
         // frame three is strike
         f3.setRollOne(10);
         instance.applyPinsToSparesAndStrikes(f3.getFrameNumber(), f3.getRollOne(), player);
-        
+
         assertEquals(30, f1.getFrameScore());
         assertEquals(20, f2.getFrameScore());
         assertEquals(10, f3.getFrameScore());
