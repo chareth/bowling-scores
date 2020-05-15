@@ -1,0 +1,41 @@
+version: '3'
+
+services:
+  database:
+    image: postgres:latest
+    container_name: bowling-scores-db
+    environment:
+      - POSTGRES_PASSWORD=pw
+      - POSTGRES_USER=postgres
+      - POSTGRES_DB=postgres
+    ports:
+      - '5432:5432'
+    volumes:
+      - database_postgres:/var/lib/postgresql/data
+    networks:
+      - bowling-network
+  app:
+    build: .
+    container_name: bowling-scores
+    links:
+     - database
+    environment:
+      - PGPASSWORD=pw
+      - PGUSER=postgres
+      - PGDATABASE=postgres
+      - PGHOST=database
+      - PGPORT=5432
+    ports:
+      - '8080:8080'
+      - '8081:8081'
+    depends_on:
+      - database
+    networks:
+      - bowling-network
+     
+networks:
+  bowling-network:
+    driver: bridge
+  
+volumes:
+  database_postgres:     
